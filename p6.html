@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            .image.fit {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+        
+            .image.fit img {
+              max-width: 50%; /* Adjust the size as needed */
+              height: auto;
+              margin: 0 auto;
+            }
+          </style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Shifali Shetty</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Human Emotion Detection using Transfer Learning</h1>
+							
+							<p>
+                                <span class="image fit"><img src="images/p8.jpg" alt="" /></span>
+
+                                The aim of this project was to build a deep learning model that is capabale of classifying the emotion (positive/negative/surprise) depicted in an input image along with identifying the presence of few facial features such as raised eyebrows, dimples, lip pressor etc. The model built will be a multi-output network with two tasks: <br/>
+                                1) Multi class classification for Emotion recognition <br/>
+                                2) Multi label classification for FACS codes identification <br/>
+
+                                Our dataset, the Cohn-Kanade Dataset, contains labeled images of faces depicting various emotions from over 123 subjects, totaling 560 images. A provided CSV file lists image paths, emotion classes, and FACs categories. We have 3 emotion classes and 15 FACs categories. Each image belongs to one emotion class but can have multiple FACs codes.
+                               
+                                Using a base VGG16 model with transfer learning, the final layers were added with the VGG16 trainable parameter set to False, ensuring pre-trained weights remain unchanged. A global average pooling layer was first added to reduce the dimensions of the feature maps. Two Dense layers with 512 neurons each, using ReLU activation, were included to capture complex patterns while preventing overfitting. Dropout layers with a 0.3 rate were inserted after each Dense layer.
+
+Two output branches were defined: the first for emotion classification with 3 neurons using a softmax activation, and the second for multi-label FACS code classification with 15 nodes using a sigmoid activation. This setup allows for accurate classification of emotions and the presence of multiple FACS codes in the images.
+
+                                <span class="image fit"><img src="images/p9.jpg" alt="" /></span>
+
+                                Stage 1 Tuning: <br/>
+                                To address overfitting observed in the base model, the dropout rate is increased from 0.3 to 0.5. This aims to reduce overfitting but may impact precision, which currently ranges between 60-70%. To counteract potential performance drops, an additional Dense layer with 512 nodes is introduced, resulting in a model with three Dense-Dropout layers, each with a 0.5 dropout rate.
+
+                                Stage 2 Tuning: <br/>
+                                Further adjustments include increasing the dropout rate by 0.1 and adding an L2 regularizer to minimize overfitting by keeping weights and biases small.
+
+                                Stage 3 Tuning: <br/>
+                                To reduce overfitting specific to the emotion output, the dropout rate for the layer just before the emotion output is slightly increased, while keeping the dropout layer before the FACS output unchanged. This involves moving the final Dropout layer into the output branches to apply different dropout values for each output type.
+
+                                You can see the model performance after each stage of tuning for both emotion recoginition and FACS detection in the below images <br/>
+
+                                <span class="image fit"><img src="images/p10.jpg" alt="" /></span>
+                                <span class="image fit"><img src="images/p11.jpg" alt="" /></span>
+
+                                <a href="https://github.com/shifshetty/AviationEmissions-TimeSeries/tree/main" class="button">Go to Project!</a>
+                            </p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
