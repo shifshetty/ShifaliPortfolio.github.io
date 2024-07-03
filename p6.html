@@ -61,13 +61,13 @@ Two output branches were defined: the first for emotion classification with 3 ne
                                 <span class="image fit"><img src="images/p9.jpg" alt="" /></span>
 
                                 Stage 1 Tuning: <br/>
-                                To address overfitting observed in the base model, the dropout rate is increased from 0.3 to 0.5. This aims to reduce overfitting but may impact precision, which currently ranges between 60-70%. To counteract potential performance drops, an additional Dense layer with 512 nodes is introduced, resulting in a model with three Dense-Dropout layers, each with a 0.5 dropout rate.
+                                To address overfitting observed in the base model, the dropout rate is increased from 0.3 to 0.5. This aims to reduce overfitting but may impact precision, which currently ranges between 60-70%. To counteract potential performance drops, an additional Dense layer with 512 nodes is introduced, resulting in a model with three Dense-Dropout layers, each with a 0.5 dropout rate.<br/>
 
                                 Stage 2 Tuning: <br/>
-                                Further adjustments include increasing the dropout rate by 0.1 and adding an L2 regularizer to minimize overfitting by keeping weights and biases small.
+                                Further adjustments include increasing the dropout rate by 0.1 and adding an L2 regularizer to minimize overfitting by keeping weights and biases small.<br/>
 
                                 Stage 3 Tuning: <br/>
-                                To reduce overfitting specific to the emotion output, the dropout rate for the layer just before the emotion output is slightly increased, while keeping the dropout layer before the FACS output unchanged. This involves moving the final Dropout layer into the output branches to apply different dropout values for each output type.
+                                To reduce overfitting specific to the emotion output, the dropout rate for the layer just before the emotion output is slightly increased, while keeping the dropout layer before the FACS output unchanged. This involves moving the final Dropout layer into the output branches to apply different dropout values for each output type.<br/>
 
                                 You can see the model performance after each stage of tuning for both emotion recoginition and FACS detection in the below images <br/>
 
